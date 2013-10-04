@@ -20,19 +20,6 @@ local scene = storyboard.newScene()
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
 
-function right (event)
-	if event.phase == "ended" then
-	storyboard.gotoScene( "scene2" )
-    end
-end
-
-
-function left (event)
-	if event.phase == "ended" then
-	storyboard.gotoScene( "scene3" )
-	end
-end
-
 
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
@@ -48,16 +35,12 @@ function scene:createScene( event )
 	background.y = display.contentHeight/2
 	group:insert(background)
 
-	message = display.newText( "Scene 1", 160, 50, nil, 60 )
+	message = display.newText( "About", 160, 50, nil, 60 )
 	message.x = display.contentWidth/2
 	message.y = display.contentHeight/2
 	group:insert(message)
 
 
-    rightArrow = display.newImageRect ( "arrowRight.png", 60,60)
-    rightArrow.x = display.contentWidth/2 + 100
-	rightArrow.y = display.contentHeight/2 + 80
-    group:insert(rightArrow)
 
 
 	-----------------------------------------------------------------------------
@@ -74,7 +57,6 @@ function scene:enterScene( event )
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
-	rightArrow:addEventListener ("touch", right)
 	-----------------------------------------------------------------------------
 	
 end
