@@ -6,6 +6,8 @@
 
 local storyboard = require "storyboard"
 
+display.setStatusBar( display.HiddenStatusBar )
+
 -- load scenetemplate.lua
 storyboard.gotoScene( "scene-home" )
 
