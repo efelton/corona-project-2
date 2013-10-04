@@ -7,6 +7,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 
+require("navbar")
+
 ----------------------------------------------------------------------------------
 -- 
 --	NOTE:
@@ -40,7 +42,7 @@ function scene:createScene( event )
 	message.y = display.contentHeight/2
 	group:insert(message)
 
-
+	setupNavbar(group)
 
 
 	-----------------------------------------------------------------------------
