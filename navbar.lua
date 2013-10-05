@@ -5,6 +5,16 @@ local navbarTextSize = 18 -- size of button text within navbar
 local navbarHeight = navbarTextSize  + navbarPadding * 2 -- height of the navbar
 local buttonSpace = 17 -- spacing between the navbar text buttons
 
+local homeBtn
+
+--function navButtonPress(event)
+--	print (event.target.myname )
+--	if event.phase == "ended" then
+--			storyboard.gotoScene( event.target.myname )
+--			storyboard.gotoScene( "scene-home" )
+--	end
+--end
+
 function setupNavbar (group) 
 	-- create the navbar
 	navbarRect = display.newRect(0, 0, navbarWidth, navbarHeight)
@@ -17,6 +27,11 @@ function setupNavbar (group)
 	homeButton = display.newText( "Home", nextTextAt, navbarPadding, nil, navbarTextSize )
 --	print ("width = " .. homeButton.width)
 	group:insert(homeButton)
+	homeBtn = display.newRect (navbarPadding, navbarPadding, homeButton.width, navbarTextSize)
+	homeBtn.alpha = 1
+	homeBtn.myname = "scene-home"
+	group:insert(homeBtn)
+
 
 	nextTextAt = nextTextAt + buttonSpace + homeButton.width
 	productsButton = display.newText( "Products", nextTextAt, navbarPadding, nil, navbarTextSize )
@@ -32,6 +47,13 @@ function setupNavbar (group)
 	contactButton = display.newText( "Contact", nextTextAt, navbarPadding, nil, navbarTextSize )
 --	print ("contact width = " .. contactButton.width)
 	group:insert(contactButton)
+
+end
+
+function setupNavbarHandlers (myfunc)
+	print (homeBtn.myname)
+
+	homeBtn:addEventListener("touch", myfunc)
 
 end
 

@@ -21,7 +21,11 @@ require("navbar")
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
-
+function nextScene(event)
+	if event.phase == "ended" then
+		storyboard.gotoScene( event.target.myname )
+	end
+end
 
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
@@ -59,6 +63,7 @@ function scene:enterScene( event )
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
+	setupNavbarHandlers(nextScene)
 	-----------------------------------------------------------------------------
 	
 end
