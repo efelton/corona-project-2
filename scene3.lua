@@ -7,6 +7,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 
+require("navbar")
+
 ----------------------------------------------------------------------------------
 -- 
 --	NOTE:
@@ -19,6 +21,11 @@ local scene = storyboard.newScene()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+function nextScene(event)
+	if event.phase == "ended" then
+		storyboard.gotoScene( event.target.myname )
+	end
+end
 
 
 
@@ -33,6 +40,7 @@ function scene:createScene( event )
 	--	Example use-case: Restore 'group' from previously saved state.
 	
 	-----------------------------------------------------------------------------
+	setupNavbar(group)
 	
 end
 
@@ -54,7 +62,7 @@ function scene:enterScene( event )
 	message.y = display.contentHeight/2
 	group:insert(message)
 
-
+	setupNavbarHandlers(nextScene)
  
 
 	-----------------------------------------------------------------------------
@@ -71,7 +79,7 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
-	
+	removeNavbarHandlers(nextScene)
 end
 
 

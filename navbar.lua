@@ -5,15 +5,7 @@ local navbarTextSize = 18 -- size of button text within navbar
 local navbarHeight = navbarTextSize  + navbarPadding * 2 -- height of the navbar
 local buttonSpace = 17 -- spacing between the navbar text buttons
 
-local homeBtn
-
---function navButtonPress(event)
---	print (event.target.myname )
---	if event.phase == "ended" then
---			storyboard.gotoScene( event.target.myname )
---			storyboard.gotoScene( "scene-home" )
---	end
---end
+local homeButton
 
 function setupNavbar (group) 
 	-- create the navbar
@@ -24,36 +16,65 @@ function setupNavbar (group)
 	local nextTextAt = navbarPadding
 
 	-- create the buttons
-	homeButton = display.newText( "Home", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("width = " .. homeButton.width)
+	homeButtonText= display.newText( "Home", nextTextAt, navbarPadding, nil, navbarTextSize )
+--	print ("width = " .. homeButtonText.width)
+	group:insert(homeButtonText)
+	homeButton = display.newRect (navbarPadding, navbarPadding, homeButtonText.width, navbarTextSize)
+	homeButton.isVisible = false
+	homeButton.isHitTestable = true
+	homeButton.myname = "scene-home"
 	group:insert(homeButton)
-	homeBtn = display.newRect (navbarPadding, navbarPadding, homeButton.width, navbarTextSize)
-	homeBtn.alpha = 1
-	homeBtn.myname = "scene-home"
-	group:insert(homeBtn)
 
+	nextTextAt = nextTextAt + buttonSpace + homeButtonText.width
+	productsButtonText = display.newText( "Products", nextTextAt, navbarPadding, nil, navbarTextSize )
+--	print ("products width = " .. productsButtonText.width)
+	group:insert(productsButtonText)
 
-	nextTextAt = nextTextAt + buttonSpace + homeButton.width
-	productsButton = display.newText( "Products", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("products width = " .. productsButton.width)
+	productsButton = display.newRect (nextTextAt, navbarPadding, productsButtonText.width, navbarTextSize)
+	productsButton.isVisible = false
+	productsButton.isHitTestable = true
+	productsButton.myname = "scene-categories"
 	group:insert(productsButton)
 
-	nextTextAt = nextTextAt + buttonSpace + productsButton.width
-	aboutButton = display.newText( "About", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("about width = " .. aboutButton.width)
+	nextTextAt = nextTextAt + buttonSpace + productsButtonText.width
+	aboutButtonText = display.newText( "About", nextTextAt, navbarPadding, nil, navbarTextSize )
+--	print ("about width = " .. aboutButtonText.width)
+	group:insert(aboutButtonText)
+
+	aboutButton = display.newRect (nextTextAt, navbarPadding, aboutButtonText.width, navbarTextSize)
+	aboutButton.isVisible = false
+	aboutButton.isHitTestable = true
+	aboutButton.myname = "scene-about"
 	group:insert(aboutButton)
 
-	nextTextAt = nextTextAt + buttonSpace + aboutButton.width
-	contactButton = display.newText( "Contact", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("contact width = " .. contactButton.width)
+	nextTextAt = nextTextAt + buttonSpace + aboutButtonText.width
+	contactButtonText = display.newText( "Contact", nextTextAt, navbarPadding, nil, navbarTextSize )
+--	print ("contact width = " .. contactButtonText.width)
+	group:insert(contactButtonText)
+
+	contactButton = display.newRect (nextTextAt, navbarPadding, contactButtonText.width, navbarTextSize)
+	contactButton.isVisible = false
+	contactButton.isHitTestable = true
+	contactButton.myname = "scene-contacts"
 	group:insert(contactButton)
 
 end
 
 function setupNavbarHandlers (myfunc)
-	print (homeBtn.myname)
+	print (homeButton.myname)
 
-	homeBtn:addEventListener("touch", myfunc)
+	homeButton:addEventListener("touch", myfunc)
+	productsButton:addEventListener("touch", myfunc)
+	aboutButton:addEventListener("touch", myfunc)
+	contactButton:addEventListener("touch", myfunc)
+end
+
+function removeNavbarHandlers (myfunc)
+	homeButton:removeEventListener("touch", myfunc)
+	productsButton:removeEventListener("touch", myfunc)
+	aboutButton:removeEventListener("touch", myfunc)
+	contactButton:removeEventListener("touch", myfunc)
 
 end
+
 

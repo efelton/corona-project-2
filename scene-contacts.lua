@@ -22,6 +22,7 @@ require("navbar")
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
 function nextScene(event)
+	print("touched")
 	if event.phase == "ended" then
 		storyboard.gotoScene( event.target.myname )
 	end
@@ -72,6 +73,8 @@ end
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
 	local group = self.view
+
+	removeNavbarHandlers(nextScene)
 	
 	-----------------------------------------------------------------------------
 	

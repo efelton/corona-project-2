@@ -7,6 +7,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 
+require("navbar")
+
 ----------------------------------------------------------------------------------
 -- 
 --	NOTE:
@@ -19,6 +21,11 @@ local scene = storyboard.newScene()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+function nextScene(event)
+	if event.phase == "ended" then
+		storyboard.gotoScene( event.target.myname )
+	end
+end
 
 function right (event)
 	if event.phase == "ended" then
@@ -59,7 +66,7 @@ function scene:createScene( event )
 	rightArrow.y = display.contentHeight/2 + 80
     group:insert(rightArrow)
 
-
+    setupNavbar(group)
 	-----------------------------------------------------------------------------
 	
 end
@@ -77,6 +84,7 @@ function scene:enterScene( event )
 	rightArrow:addEventListener ("touch", right)
 	-----------------------------------------------------------------------------
 	
+	setupNavbarHandlers(nextScene)
 end
 
 
@@ -89,6 +97,7 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
+	removeNavbarHandlers(nextScene)
 	
 end
 

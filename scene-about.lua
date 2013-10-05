@@ -7,6 +7,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 
+require("navbar")
+
 ----------------------------------------------------------------------------------
 -- 
 --	NOTE:
@@ -19,6 +21,11 @@ local scene = storyboard.newScene()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+function nextScene(event)
+	if event.phase == "ended" then
+		storyboard.gotoScene( event.target.myname )
+	end
+end
 
 
 -- Called when the scene's view does not exist:
@@ -41,6 +48,7 @@ function scene:createScene( event )
 	group:insert(message)
 
 
+	setupNavbar(group)
 
 
 	-----------------------------------------------------------------------------
@@ -58,7 +66,8 @@ function scene:enterScene( event )
 	message:setTextColor( 255,0,0 )
 
 	-----------------------------------------------------------------------------
-	
+
+	setupNavbarHandlers(nextScene)	
 end
 
 
@@ -71,6 +80,7 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
+	removeNavbarHandlers(nextScene)	
 	
 end
 
