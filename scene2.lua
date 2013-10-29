@@ -86,7 +86,8 @@ function listButtonRelease( event )
    		 {
       	  var1 = self.data.title,
       	  var2 = self.data.subtitle,
-      	  var3 = self.data.image
+      	  var3 = self.data.image,
+      	  var4 = self.data.longDescription
   		 }
 	}
 
@@ -96,34 +97,50 @@ end
 
 --setup each row as a new table, then add title, subtitle, and image
 data[1] = {}
-data[1].title = "Hot Coffee"
-data[1].subtitle = "Grounds brewed in hot water"
+data[1].title = "Chaos in the Old World"
+data[1].subtitle = "Multiple paths to victory"
 data[1].image = "img/chaos-cover.png"
+data[1].longDescription = "Finely balanced asymmetric area control game with multiple paths to victory. Play with 4 only. " ..
+	"Lasts 2-3 hours. Complexity is medium."
 
 data[2] = {}
-data[2].title = "Iced Coffee"
-data[2].subtitle = "Chilled coffee with ice"
+data[2].title = "Cyclades"
+data[2].subtitle = "Light conflict game with auctions"
 data[2].image = "img/cyclades-cover.png"
+data[2].longDescription = "Light and simple conflict game which involves auctions, greek mythology and some civ elements." ..
+	"This is a surprisingly rich game that belies its simple ruleset. Very entertaining! " .. 
+	"Plays best with 3 to 5. Duration is about 2 hours. Complexity is Easy." 
 
 data[3] = {}
-data[3].title = "Espresso"
-data[3].subtitle = "Hot water forced through"
+data[3].title = "Descent"
+data[3].subtitle = "Tactical miniatures dungeoneer"
 data[3].image = "img/descent-cover.png"
+data[3].longDescription = "Tactical miniatures game with dungeon crawling theme. Enjoyable update on an old classic. " .. 
+	"Plenty of miniatures come in the box. A drawback is that there is no hidden information so the players are rarely " ..
+	"surprised. Play with 2 to 5. Duration is 2 to 3 hours. Complexity is difficult."
 
 data[4] = {}
-data[4].title = "Cappuccino"
-data[4].subtitle = "Espresso with frothy milk"
+data[4].title = "Kemet"
+data[4].subtitle = "Egyptian themed game"
 data[4].image = "img/kemet-cover.png"
+data[4].longDescription = "This is an Eqyptian themed conflict game which rewards aggressive play. " ..
+	"The rules discourage playing defensively. Quick moving and enjoyable. Anything can happen. Very bloody. " .. 
+	"Play with 2 to 5. Duration is 2-3 hours. Complexity is Medium."
 
 data[5] = {}
-data[5].title = "Latte"
-data[5].subtitle = "More milk and less froth"
+data[5].title = "Merchants and Marauders"
+data[5].subtitle = "Caribbean Pirates simulator"
 data[5].image = "img/merchants-cover.png"
+data[5].longDescription = "This is a simulation of seafaring in the Caribbean during the Age of Sail" ..
+	"This is a complex and heavyweight game with a lot of planning. Full of flavour and tension. " ..
+	"Play with 2 to 4. Duration is 2-4 hours. Complexity is Difficult."
 
 data[6] = {}
-data[6].title = "Americano"
-data[6].subtitle = "Espresso with hot water"
+data[6].title = "King of Tokyo"
+data[6].subtitle = "Lightweight dice roller"
 data[6].image = "img/tokyo-cover.png"
+data[6].longDescription = "Quick-moving and lightweight, but thoughtful dice game. Good pick up game. Bright and Breezy. " ..
+	"Play with any number from 2 to 6. Lasts 30 mins. Complexity is easy."
 
 
 

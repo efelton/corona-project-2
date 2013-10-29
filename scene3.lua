@@ -57,10 +57,20 @@ function scene:enterScene( event )
       	  print(params.var2)
       	  print(params.var3)
 
-    message = display.newText( "You Tapped: " .. params.var1, 160, 50, nil, 20 )
+
+	imageHeader = display.newImage(params.var3)
+	imageHeader.x = display.contentWidth *0.5
+	imageHeader.y = display.contentHeight * 0.3
+	group:insert(imageHeader)
+
+    message = display.newText( params.var1, 160, 50, nil, 20 )
 	message.x = display.contentWidth/2
-	message.y = display.contentHeight/2
+	message.y = display.contentHeight * 0.45
 	group:insert(message)
+
+	longMessage = display.newText (params.var4, 160, display.contentHeight * 0.55, 280, 0, nil, 18)
+	longMessage.x = display.contentWidth/2
+	group:insert(longMessage)
 
 	setupNavbarHandlers(nextScene)
  
