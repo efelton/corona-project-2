@@ -98,32 +98,32 @@ end
 data[1] = {}
 data[1].title = "Hot Coffee"
 data[1].subtitle = "Grounds brewed in hot water"
-data[1].image = "coffee1.png"
+data[1].image = "img/chaos-cover.png"
 
 data[2] = {}
 data[2].title = "Iced Coffee"
 data[2].subtitle = "Chilled coffee with ice"
-data[2].image = "coffee2.png"
+data[2].image = "img/cyclades-cover.png"
 
 data[3] = {}
 data[3].title = "Espresso"
 data[3].subtitle = "Hot water forced through"
-data[3].image = "coffee3.png"
+data[3].image = "img/descent-cover.png"
 
 data[4] = {}
 data[4].title = "Cappuccino"
 data[4].subtitle = "Espresso with frothy milk"
-data[4].image = "coffee4.png"
+data[4].image = "img/kemet-cover.png"
 
 data[5] = {}
 data[5].title = "Latte"
 data[5].subtitle = "More milk and less froth"
-data[5].image = "coffee5.png"
+data[5].image = "img/merchants-cover.png"
 
 data[6] = {}
 data[6].title = "Americano"
 data[6].subtitle = "Espresso with hot water"
-data[6].image = "coffee6.png"
+data[6].image = "img/tokyo-cover.png"
 
 
 
