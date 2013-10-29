@@ -44,9 +44,15 @@ function scene:createScene( event )
 
 	message = display.newText( "About", 160, 50, nil, 60 )
 	message.x = display.contentWidth/2
-	message.y = display.contentHeight/2
+	message.y = display.contentHeight *0.20
 	group:insert(message)
 
+	detailMessageText = "Blue Whimsey Games was established in 2009. It quickly went on to become one of the world's leading " ..
+						"retailers of board games. We pride ourselves on our friendly and knowledgable service. From the most " ..
+						"cutting edge up to date game to the hard-to-find out of print classic, we have it and can sell it to " ..
+						"you for a very reasonable price."
+	detailMessage = display.newText(detailMessageText, 30, 150, 260, 0, nil, 18 )
+	group: insert(detailMessage)
 
 	setupNavbar(group)
 
