@@ -7,6 +7,9 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 
+require("navbar")
+
+
 ----------------------------------------------------------------------------------
 -- 
 --	NOTE:
@@ -19,7 +22,11 @@ local scene = storyboard.newScene()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
-
+function nextScene(event)
+	if event.phase == "ended" then
+		storyboard.gotoScene( event.target.myname )
+	end
+end
 
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
@@ -32,7 +39,7 @@ function scene:createScene( event )
 	
 
 	-----------------------------------------------------------------------------
-	
+	setupNavbar(group)
 end
 
 
@@ -58,7 +65,7 @@ local screenOffsetW, screenOffsetH = display.contentWidth -  display.viewableCon
 
 local myList
 
-local background = display.newRect(0, 0, display.contentWidth, display.contentHeight)
+local background = display.newRect(0, navbarHeight, display.contentWidth, display.contentHeight)
 background:setFillColor(77, 77, 77)
 group:insert(background)
  
@@ -220,7 +227,8 @@ data[16].image = "img/talisman.png"
 data[16].longDescription = "Seek a talisman and then the Crown of Command " ..
 	"Plays with 2-6 players. Lasts 2-3 hours. Complexity is Medium."
 
-local topBoundary = display.screenOriginY + 40
+--local topBoundary = display.screenOriginY + 40
+local topBoundary = navbarHeight
 local bottomBoundary = display.screenOriginY + 0
 
 -- create the list of items
@@ -266,21 +274,21 @@ local function scrollToTop()
 	myList:scrollTo(topBoundary)
 end
 
---Setup the nav bar 
-local navBar = ui.newButton{
-	default = "navBar.png",
-	onRelease = scrollToTop
-}
+-- --Setup the nav bar 
+-- local navBar = ui.newButton{
+-- 	default = "navBar.png",
+-- 	onRelease = scrollToTop
+-- }
 
-navBar.x = display.contentWidth*.5
-navBar.y = math.floor(display.screenOriginY + navBar.height*0.5) -- screenOriginY is used in cases like iphone 5 where borders are added to screen
-group:insert(navBar)
+-- navBar.x = display.contentWidth*.5
+-- navBar.y = math.floor(display.screenOriginY + navBar.height*0.5) -- screenOriginY is used in cases like iphone 5 where borders are added to screen
+-- group:insert(navBar)
 
-local navHeader = display.newText("Coffee", 0, 0, native.systemFontBold, 16)
-navHeader:setTextColor(255, 255, 255)
-navHeader.x = display.contentWidth*.5
-navHeader.y = navBar.y
-group:insert(navHeader)
+-- local navHeader = display.newText("Coffee", 0, 0, native.systemFontBold, 16)
+--navHeader:setTextColor(255, 255, 255)
+--navHeader.x = display.contentWidth*.5
+--navHeader.y = navBar.y
+--group:insert(navHeader)
 
 --Add a white background to the list.  
 
@@ -290,7 +298,8 @@ myList:insert(1,listBackground)
 
 
 	-----------------------------------------------------------------------------
-	
+
+setupNavbarHandlers(nextScene)	
 end
 
 
@@ -303,6 +312,7 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
+	removeNavbarHandlers(nextScene)
 	
 end
 
