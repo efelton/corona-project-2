@@ -142,7 +142,83 @@ data[6].image = "img/tokyo-cover.png"
 data[6].longDescription = "Quick-moving and lightweight, but thoughtful dice game. Good pick up game. Bright and Breezy. " ..
 	"Play with any number from 2 to 6. Lasts 30 mins. Complexity is easy."
 
+data[7] = {}
+data[7].title = "Agricola"
+data[7].subtitle = "The Farming Game"
+data[7].image = "img/agricola.png"
+data[7].longDescription = "Strategic minded Euro game about farming. Look after your livestock. " ..
+	"Play from 2 to 5. Lasts 1 to 2 hours. Complexity is Medium."
 
+data[8] = {}
+data[8].title = "Archipelago"
+data[8].subtitle = "Colonial resource production"
+data[8].image = "img/archipelago.png"
+data[8].longDescription = "Complex game about colonialism in the Caribbean. Interesting hidden victory condition mechanic. " ..
+	" Lasts 2 to 3 hours. Complexity is Difficult."
+
+data[9] = {}
+data[9].title = "Ascending Empires"
+data[9].subtitle = "Flicking space game"
+data[9].image = "img/ascending-empires.png"
+data[9].longDescription = "Quick moving but meaty space strategy game. Movement is accomplished by flicking counters across the board. " ..
+	" Best with 4 players. Lasts 2 hours. Complexity is Easy."
+
+data[10] = {}
+data[10].title = "Ascending Empires"
+data[10].subtitle = "Flicking space game"
+data[10].image = "img/ascending-empires.png"
+data[10].longDescription = "Game of deception, negotiation and memory. A social game with a hidden traitor mechanic. " ..
+	" Plays with 5-10 players. Lasts 30 mins. Complexity is Medium."
+
+data[10] = {}
+data[10].title = "House on the Hill"
+data[10].subtitle = "Horror game"
+data[10].image = "img/betrayal.png"
+data[10].longDescription = "Horror game with 40 different scenarios. One player becomes the traitor. " ..
+	" Plays with 3-5 players. Lasts 2 hours. Complexity is Medium."
+
+data[11] = {}
+data[11].title = "Settlers of Catan"
+data[11].subtitle = "Trading game"
+data[11].image = "img/catan.png"
+data[11].longDescription = "Classic euro-style trading game. Acquire resources to build roads and settlements. " ..
+	" Plays with 3-4 players. Lasts 2 hours. Complexity is Medium."
+
+data[12] = {}
+data[12].title = "DungeonQuest"
+data[12].subtitle = "Raid the dragon's hoard"
+data[12].image = "img/dungeonquest.png"
+data[12].longDescription = "Raid the dragon's hoard. Very low chance of survival or success. " ..
+	" Plays with 1-4 players. Lasts 90 mins. Complexity is Medium."
+
+data[13] = {}
+data[13].title = "Risk: Legacy"
+data[13].subtitle = "Metagame"
+data[13].image = "img/legacy.png"
+data[13].longDescription = "Based on the Risk boardgame. The rules and board change game to game based on player decisions. " ..
+	"Make your own game. " ..
+	"Plays with 2-4 players. Lasts 90 mins. Complexity is Medium."
+
+data[14] = {}
+data[14].title = "Puerto Rico"
+data[14].subtitle = "Grow your plantation"
+data[14].image = "img/puerto-rico.png"
+data[14].longDescription = "Invest in your plantation and grow cotton and indigo. Success is based on your reputation back in Spain. " ..
+	" Plays with 3-5 players. Lasts 2 hours. Complexity is Medium."
+
+data[15] = {}
+data[15].title = "Space Hulk"
+data[15].subtitle = "Desperate Battle"
+data[15].image = "img/space-hulk.png"
+data[15].longDescription = "Man versus alien in desperate battle. The 3rd edition is a beautiful update to a classic game. " ..
+	"Plays with 2 players. Lasts 2 hours. Complexity is Medium."
+
+data[16] = {}
+data[16].title = "Talisman"
+data[16].subtitle = "The Magical Quest Game"
+data[16].image = "img/talisman.png"
+data[16].longDescription = "Seek a talisman and then the Crown of Command " ..
+	"Plays with 2-6 players. Lasts 2-3 hours. Complexity is Medium."
 
 local topBoundary = display.screenOriginY + 40
 local bottomBoundary = display.screenOriginY + 0
