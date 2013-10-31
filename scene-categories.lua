@@ -57,14 +57,28 @@ function scene:createScene( event )
 
 	message = display.newText( "Categories", 160, 50, nil, 60 )
 	message.x = display.contentWidth/2
-	message.y = display.contentHeight/2
+	message.y = 100
 	group:insert(message)
 
+    fantasyButton = display.newImageRect ( "img/fantasy-category.png", 150, 30)
+    fantasyButton.x = display.contentWidth/2 -80
+	fantasyButton.y = display.contentHeight/2 - 40
+    group:insert(fantasyButton)
 
-    rightArrow = display.newImageRect ( "arrowRight.png", 60,60)
-    rightArrow.x = display.contentWidth/2 + 100
-	rightArrow.y = display.contentHeight/2 + 80
-    group:insert(rightArrow)
+    unusualButton = display.newImageRect ( "img/unusual-category.png", 150, 30)
+    unusualButton.x = display.contentWidth/2 +80
+	unusualButton.y = display.contentHeight/2 - 40
+    group:insert(unusualButton)
+
+    euroButton = display.newImageRect ( "img/eurogame-category.png", 150, 30)
+    euroButton.x = display.contentWidth/2 -80
+	euroButton.y = display.contentHeight/2 + 0
+    group:insert(euroButton)
+
+    ameriButton = display.newImageRect ( "img/ameritrash-category.png", 150, 30)
+    ameriButton.x = display.contentWidth/2 +80
+	ameriButton.y = display.contentHeight/2 + 0
+    group:insert(ameriButton)
 
     setupNavbar(group)
 	-----------------------------------------------------------------------------
@@ -81,7 +95,10 @@ function scene:enterScene( event )
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
-	rightArrow:addEventListener ("touch", right)
+	fantasyButton:addEventListener ("touch", right)
+	unusualButton:addEventListener ("touch", right)
+	euroButton:addEventListener ("touch", right)
+	ameriButton:addEventListener ("touch", right)
 	-----------------------------------------------------------------------------
 	
 	setupNavbarHandlers(nextScene)
@@ -97,6 +114,11 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
+	fantasyButton:removeEventListener ("touch", right)
+	unusualButton:removeEventListener ("touch", right)
+	euroButton:removeEventListener ("touch", right)
+	ameriButton:removeEventListener ("touch", right)
+
 	removeNavbarHandlers(nextScene)
 	
 end
