@@ -2,7 +2,7 @@
 local navbarWidth = display.contentWidth
 local navbarPadding = 12 -- padding border of navbar
 local navbarTextSize = 18 -- size of button text within navbar
-local navbarHeight = navbarTextSize  + navbarPadding * 2 -- height of the navbar
+navbarHeight = navbarTextSize  + navbarPadding * 2 -- height of the navbar
 local buttonSpace = 17 -- spacing between the navbar text buttons
 
 local homeButton
