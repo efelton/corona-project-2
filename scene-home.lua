@@ -21,7 +21,7 @@ local scene = storyboard.newScene()
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
 
-function right (event)
+function goCategories (event)
 	if event.phase == "ended" then
 	storyboard.gotoScene( "scene-categories" )
     end
@@ -55,24 +55,24 @@ function scene:createScene( event )
 
 	message = display.newText( "Home", 160, 50, nil, 60 )
 	message.x = display.contentWidth/2
-	message.y = display.contentHeight/2
+	message.y = 100
 	group:insert(message)
 
 
-    rightArrow = display.newImageRect ( "arrowRight.png", 60,60)
-    rightArrow.x = display.contentWidth/2 + 100
-	rightArrow.y = display.contentHeight/2 + 80
-    group:insert(rightArrow)
+    productsButton = display.newImageRect ( "img/products-button.png", 200, 50)
+    productsButton.x = display.contentWidth/2
+	productsButton.y = display.contentHeight/2 - 65
+    group:insert(productsButton)
 
-    aboutArrow = display.newImageRect ( "arrowRight.png", 60,60)
-    aboutArrow.x = display.contentWidth/2 + 0
-	aboutArrow.y = display.contentHeight/2 + 80
-    group:insert(aboutArrow)
+    aboutButton = display.newImageRect ( "img/about-button.png", 200, 50)
+    aboutButton.x = display.contentWidth/2 
+	aboutButton.y = display.contentHeight/2 +0
+    group:insert(aboutButton)
 
-    contactsArrow = display.newImageRect ( "arrowRight.png", 60,60)
-    contactsArrow.x = display.contentWidth/2 + -100
-	contactsArrow.y = display.contentHeight/2 + 80
-    group:insert(contactsArrow)
+    contactsButton = display.newImageRect ( "img/contact-button.png", 200, 50)
+    contactsButton.x = display.contentWidth/2
+	contactsButton.y = display.contentHeight/2 + 65
+    group:insert(contactsButton)
 
 	-----------------------------------------------------------------------------
 	
@@ -88,9 +88,9 @@ function scene:enterScene( event )
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
-	rightArrow:addEventListener ("touch", right)
-	aboutArrow:addEventListener ("touch", goAbout)
-	contactsArrow:addEventListener ("touch", goContacts)
+	productsButton:addEventListener ("touch", goCategories)
+	aboutButton:addEventListener ("touch", goAbout)
+	contactsButton:addEventListener ("touch", goContacts)
 	-----------------------------------------------------------------------------
 	
 end
@@ -106,6 +106,9 @@ function scene:exitScene( event )
 	
 	-----------------------------------------------------------------------------
 	
+	productsButton:removeEventListener("touch", goCategories)
+	aboutButton:removeEventListener ("touch", goAbout)
+	contactsButton:removeEventListener ("touch", goContacts)
 end
 
 
