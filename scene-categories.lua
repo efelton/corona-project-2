@@ -23,7 +23,15 @@ require("navbar")
 ---------------------------------------------------------------------------------
 function nextScene(event)
 	if event.phase == "ended" then
-		storyboard.gotoScene( event.target.myname )
+	print ("got here")
+		local options = {
+		    params = {
+	      	  category = event.target.category
+  		 	}
+		}
+	      	  print ("category = " .. event.target.category)
+		storyboard.gotoScene( "scene2", options )
+	--	storyboard.gotoScene( event.target.myname )
 	end
 end
 
@@ -63,21 +71,25 @@ function scene:createScene( event )
     fantasyButton = display.newImageRect ( "img/fantasy-category.png", 150, 30)
     fantasyButton.x = display.contentWidth/2 -80
 	fantasyButton.y = display.contentHeight/2 - 40
+	fantasyButton.category = 1
     group:insert(fantasyButton)
 
     unusualButton = display.newImageRect ( "img/unusual-category.png", 150, 30)
     unusualButton.x = display.contentWidth/2 +80
 	unusualButton.y = display.contentHeight/2 - 40
+	unusualButton.category = 2
     group:insert(unusualButton)
 
     euroButton = display.newImageRect ( "img/eurogame-category.png", 150, 30)
     euroButton.x = display.contentWidth/2 -80
 	euroButton.y = display.contentHeight/2 + 0
+	euroButton.category = 3
     group:insert(euroButton)
 
     ameriButton = display.newImageRect ( "img/ameritrash-category.png", 150, 30)
     ameriButton.x = display.contentWidth/2 +80
 	ameriButton.y = display.contentHeight/2 + 0
+	ameriButton.category = 4
     group:insert(ameriButton)
 
     setupNavbar(group)
@@ -95,10 +107,10 @@ function scene:enterScene( event )
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
-	fantasyButton:addEventListener ("touch", right)
-	unusualButton:addEventListener ("touch", right)
-	euroButton:addEventListener ("touch", right)
-	ameriButton:addEventListener ("touch", right)
+	fantasyButton:addEventListener ("touch", nextScene)
+	unusualButton:addEventListener ("touch", nextScene)
+	euroButton:addEventListener ("touch", nextScene)
+	ameriButton:addEventListener ("touch", nextScene)
 	-----------------------------------------------------------------------------
 	
 	setupNavbarHandlers(nextScene)
@@ -114,10 +126,10 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
-	fantasyButton:removeEventListener ("touch", right)
-	unusualButton:removeEventListener ("touch", right)
-	euroButton:removeEventListener ("touch", right)
-	ameriButton:removeEventListener ("touch", right)
+	fantasyButton:removeEventListener ("touch", nextScene)
+	unusualButton:removeEventListener ("touch", nextScene)
+	euroButton:removeEventListener ("touch", nextScene)
+	ameriButton:removeEventListener ("touch", nextScene)
 
 	removeNavbarHandlers(nextScene)
 	

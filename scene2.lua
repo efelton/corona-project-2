@@ -171,13 +171,6 @@ data[9].longDescription = "Quick moving but meaty space strategy game. Movement 
 	" Best with 4 players. Lasts 2 hours. Complexity is Easy."
 
 data[10] = {}
-data[10].title = "Ascending Empires"
-data[10].subtitle = "Flicking space game"
-data[10].image = "img/ascending-empires.png"
-data[10].longDescription = "Game of deception, negotiation and memory. A social game with a hidden traitor mechanic. " ..
-	" Plays with 5-10 players. Lasts 30 mins. Complexity is Medium."
-
-data[10] = {}
 data[10].title = "House on the Hill"
 data[10].subtitle = "Horror game"
 data[10].image = "img/betrayal.png"
@@ -227,14 +220,35 @@ data[16].image = "img/talisman.png"
 data[16].longDescription = "Seek a talisman and then the Crown of Command " ..
 	"Plays with 2-6 players. Lasts 2-3 hours. Complexity is Medium."
 
+--set up the category list
+local params = event.params
+
+-- if (params.var1 == 1) then
+	local selectedData = {}
+	local picker = {}
+
+	if (params.category == 1) then -- fantasy
+		picker = {1, 2, 3, 4, 12, 16}
+	elseif (params.category == 2) then -- unusual
+		picker = {2, 4, 5, 6, 8, 9, 10, 12, 13}
+	elseif (params.category == 3) then -- euro
+		picker = {7, 8, 11, 14}
+	else -- ameritrash
+		picker = {1, 3, 9, 10, 12, 15, 16}
+	end
+
+	for counter = 1, table.getn(picker), 1 do
+		selectedData[counter] = data [picker[counter]]
+	end
+-- end
+
 --local topBoundary = display.screenOriginY + 40
 local topBoundary = navbarHeight
 local bottomBoundary = display.screenOriginY + 0
 
 -- create the list of items
-
 	myList = tableView.newList{
-	data=data, --A table containing elements that the list can iterate through to display in each row.
+	data=selectedData, --A table containing elements that the list can iterate through to display in each row.
 	default="listItemBg.png", --An image for the row background. Defines the hit area for the touch.
 	over="listItemBg_over.png", --An image that will show on touch.
 	onRelease=listButtonRelease, --A function name that defines the action to take after a row is tapped.
