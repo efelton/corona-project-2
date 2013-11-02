@@ -23,6 +23,12 @@ require("navbar")
 ---------------------------------------------------------------------------------
 function nextScene(event)
 	if event.phase == "ended" then
+		storyboard.gotoScene( event.target.myname )
+	end
+end
+
+function goCategory (event)
+	if event.phase == "ended" then
 	print ("got here")
 		local options = {
 		    params = {
@@ -33,12 +39,6 @@ function nextScene(event)
 		storyboard.gotoScene( "scene2", options )
 	--	storyboard.gotoScene( event.target.myname )
 	end
-end
-
-function right (event)
-	if event.phase == "ended" then
-	storyboard.gotoScene( "scene2" )
-    end
 end
 
 
@@ -107,12 +107,12 @@ function scene:enterScene( event )
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
-	fantasyButton:addEventListener ("touch", nextScene)
-	unusualButton:addEventListener ("touch", nextScene)
-	euroButton:addEventListener ("touch", nextScene)
-	ameriButton:addEventListener ("touch", nextScene)
+	fantasyButton:addEventListener ("touch", goCategory)
+	unusualButton:addEventListener ("touch", goCategory)
+	euroButton:addEventListener ("touch", goCategory)
+	ameriButton:addEventListener ("touch", goCategory)
 	-----------------------------------------------------------------------------
-	
+
 	setupNavbarHandlers(nextScene)
 end
 
@@ -126,10 +126,10 @@ function scene:exitScene( event )
 	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
 	
 	-----------------------------------------------------------------------------
-	fantasyButton:removeEventListener ("touch", nextScene)
-	unusualButton:removeEventListener ("touch", nextScene)
-	euroButton:removeEventListener ("touch", nextScene)
-	ameriButton:removeEventListener ("touch", nextScene)
+	fantasyButton:removeEventListener ("touch", goCategory)
+	unusualButton:removeEventListener ("touch", goCategory)
+	euroButton:removeEventListener ("touch", goCategory)
+	ameriButton:removeEventListener ("touch", goCategory)
 
 	removeNavbarHandlers(nextScene)
 	
