@@ -21,6 +21,8 @@ require("navbar")
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+local fantasyButton, unusualButton, euroButton, ameriButton
+
 function nextScene(event)
 	if event.phase == "ended" then
 		storyboard.gotoScene( event.target.myname )
@@ -112,7 +114,6 @@ function scene:enterScene( event )
 	euroButton:addEventListener ("touch", goCategory)
 	ameriButton:addEventListener ("touch", goCategory)
 	-----------------------------------------------------------------------------
-
 	setupNavbarHandlers(nextScene)
 end
 

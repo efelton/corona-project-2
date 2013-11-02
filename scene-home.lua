@@ -20,10 +20,11 @@ local scene = storyboard.newScene()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
+local background, message, productsButton, aboutButton, contactsButton		
 
 function goCategories (event)
 	if event.phase == "ended" then
-	storyboard.gotoScene( "scene-categories" )
+		storyboard.gotoScene( "scene-categories" )
     end
 end
 
@@ -44,7 +45,6 @@ function scene:createScene( event )
 	local group = self.view
 
 	-----------------------------------------------------------------------------
-		
 	--	CREATE display objects and add them to 'group' here.
 	--	Example use-case: Restore 'group' from previously saved state.
 	
@@ -82,16 +82,13 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
 	local group = self.view
+
 	
-	-----------------------------------------------------------------------------
-		
-	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	message:setTextColor( 255,0,0 )
 
 	productsButton:addEventListener ("touch", goCategories)
 	aboutButton:addEventListener ("touch", goAbout)
 	contactsButton:addEventListener ("touch", goContacts)
-	-----------------------------------------------------------------------------
 	
 end
 
@@ -99,12 +96,6 @@ end
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
 	local group = self.view
-	
-	-----------------------------------------------------------------------------
-	
-	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
-	
-	-----------------------------------------------------------------------------
 	
 	productsButton:removeEventListener("touch", goCategories)
 	aboutButton:removeEventListener ("touch", goAbout)
