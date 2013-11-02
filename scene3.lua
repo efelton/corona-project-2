@@ -88,6 +88,9 @@ function scene:exitScene( event )
 	imageHeader:removeSelf() 
 	message:removeSelf()
 	longMessage:removeSelf()
+
+	storyboard.removeAll()
+
 end
 
 

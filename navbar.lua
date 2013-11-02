@@ -6,6 +6,8 @@ navbarHeight = navbarTextSize  + navbarPadding * 2 -- height of the navbar
 local buttonSpace = 17 -- spacing between the navbar text buttons
 
 local homeButton
+local navBarRect, homeButtonText, homeButton, productsButtonText, productsButton, aboutButtonText, aboutButton, contactButtonText, contactButton
+
 
 function setupNavbar (group) 
 	-- create the navbar
@@ -61,7 +63,6 @@ function setupNavbar (group)
 end
 
 function setupNavbarHandlers (myfunc)
-	print (homeButton.myname)
 
 	homeButton:addEventListener("touch", myfunc)
 	productsButton:addEventListener("touch", myfunc)

@@ -25,6 +25,7 @@ require("navbar")
 function nextScene(event)
 	if event.phase == "ended" then
 		storyboard.gotoScene( event.target.myname )
+		return true
 	end
 end
 
@@ -329,6 +330,8 @@ function scene:exitScene( event )
 	
 	-----------------------------------------------------------------------------
 	removeNavbarHandlers(nextScene)
+	storyboard.removeAll()
+
 	
 end
 

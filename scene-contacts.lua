@@ -71,6 +71,7 @@ function scene:exitScene( event )
 	local group = self.view
 
 	removeNavbarHandlers(nextScene)
+	storyboard.removeAll()
 	
 	-----------------------------------------------------------------------------
 	

@@ -130,6 +130,8 @@ function scene:exitScene( event )
 	ameriButton:removeEventListener ("touch", goCategory)
 
 	removeNavbarHandlers(nextScene)
+	storyboard.removeAll()
+	
 	
 end
 

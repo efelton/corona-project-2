@@ -88,6 +88,8 @@ function scene:exitScene( event )
 	
 	-----------------------------------------------------------------------------
 	removeNavbarHandlers(nextScene)	
+	storyboard.removeAll()
+
 	
 end
 
