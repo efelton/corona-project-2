@@ -283,6 +283,8 @@ local bottomBoundary = display.screenOriginY + 0
                   end 
 }
 group:insert(myList)
+myList:toBack() -- move the list back so that it won't overwrite the navbar
+background:toBack()
 
 local function scrollToTop()
 	myList:scrollTo(topBoundary)
