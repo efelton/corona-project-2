@@ -44,7 +44,8 @@ function scene:createScene( event )
 
 	message = display.newText( "Contact us", 160, 50, nil, 60 )
 	message.x = display.contentWidth/2
-	message.y = display.contentHeight/2
+	message.y = display.contentHeight * 0.2
+	message:setTextColor(34, 51, 136)
 	group:insert(message)
 
 	setupNavbar(group)
@@ -58,11 +59,6 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
 	local group = self.view
-	
-	-----------------------------------------------------------------------------
-		
-	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
-	message:setTextColor( 255,0,0 )
 
 	setupNavbarHandlers(nextScene)
 	-----------------------------------------------------------------------------

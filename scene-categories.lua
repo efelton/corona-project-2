@@ -31,15 +31,12 @@ end
 
 function goCategory (event)
 	if event.phase == "ended" then
-	print ("got here")
 		local options = {
 		    params = {
 	      	  category = event.target.category
   		 	}
 		}
-	      	  print ("category = " .. event.target.category)
 		storyboard.gotoScene( "scene2", options )
-	--	storyboard.gotoScene( event.target.myname )
 	end
 end
 
@@ -68,6 +65,7 @@ function scene:createScene( event )
 	message = display.newText( "Categories", 160, 50, nil, 60 )
 	message.x = display.contentWidth/2
 	message.y = 100
+	message:setTextColor( 34, 51, 136 )
 	group:insert(message)
 
     fantasyButton = display.newImageRect ( "img/fantasy-category.png", 150, 30)
@@ -107,7 +105,6 @@ function scene:enterScene( event )
 	-----------------------------------------------------------------------------
 		
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
-	message:setTextColor( 255,0,0 )
 
 	fantasyButton:addEventListener ("touch", goCategory)
 	unusualButton:addEventListener ("touch", goCategory)

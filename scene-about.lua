@@ -52,6 +52,7 @@ function scene:createScene( event )
 						"cutting edge up to date game to the hard-to-find out of print classic, we have it and can sell it to " ..
 						"you for a very reasonable price."
 	detailMessage = display.newText(detailMessageText, 30, 150, 260, 0, nil, 18 )
+	detailMessage:setTextColor(34, 51, 136)
 	group: insert(detailMessage)
 
 	setupNavbar(group)
@@ -69,7 +70,7 @@ function scene:enterScene( event )
 	-----------------------------------------------------------------------------
 		
 	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
-	message:setTextColor( 255,0,0 )
+	message:setTextColor( 34, 51, 136 )
 
 	-----------------------------------------------------------------------------
 
