@@ -53,25 +53,24 @@ function scene:createScene( event )
 	background.y = display.contentHeight/2
 	group:insert(background)
 
-	message = display.newText( "Home", 160, 50, nil, 60 )
-	message.x = display.contentWidth/2
-	message.y = 100
-	group:insert(message)
-
+	logo = display.newImageRect("img/bwg-logo.png", 210, 110)
+	logo.x = display.contentWidth/2
+	logo.y= 100
+	group:insert(logo)
 
     productsButton = display.newImageRect ( "img/products-button.png", 200, 50)
     productsButton.x = display.contentWidth/2
-	productsButton.y = display.contentHeight/2 - 65
+	productsButton.y = display.contentHeight/2 + 0
     group:insert(productsButton)
 
     aboutButton = display.newImageRect ( "img/about-button.png", 200, 50)
     aboutButton.x = display.contentWidth/2 
-	aboutButton.y = display.contentHeight/2 +0
+	aboutButton.y = display.contentHeight/2 + 65
     group:insert(aboutButton)
 
     contactsButton = display.newImageRect ( "img/contact-button.png", 200, 50)
     contactsButton.x = display.contentWidth/2
-	contactsButton.y = display.contentHeight/2 + 65
+	contactsButton.y = display.contentHeight/2 + 130
     group:insert(contactsButton)
 
 	-----------------------------------------------------------------------------
@@ -83,13 +82,9 @@ end
 function scene:enterScene( event )
 	local group = self.view
 
-	
-	message:setTextColor( 255,0,0 )
-
 	productsButton:addEventListener ("touch", goCategories)
 	aboutButton:addEventListener ("touch", goAbout)
-	contactsButton:addEventListener ("touch", goContacts)
-	
+	contactsButton:addEventListener ("touch", goContacts)	
 end
 
 
