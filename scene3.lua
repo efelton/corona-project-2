@@ -84,12 +84,10 @@ end
 function scene:exitScene( event )
 	local group = self.view
 	
-	-----------------------------------------------------------------------------
-	
-	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
-	
-	-----------------------------------------------------------------------------
 	removeNavbarHandlers(nextScene)
+	imageHeader:removeSelf() 
+	message:removeSelf()
+	longMessage:removeSelf()
 end
 
 
