@@ -16,6 +16,19 @@ function nextScene(event)
 	end
 end
 
+-- function to change scene when the back button is pressed
+function goBack(event)
+	if event.phase == "ended" then	
+		local options = {
+		    params = {
+	      	  category = event.target.returnCategory
+  		 	}
+		}
+		print("category == " .. event.target.returnCategory)
+		storyboard.gotoScene ("scene2", options)
+	end
+end
+
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
 	local group = self.view
@@ -31,7 +44,7 @@ function scene:enterScene( event )
 	
 	local params = event.params
 
-	-- set up the imageHeader, message and longMessage
+	-- set up the imageHeader, message, longMessage and backButton
 	imageHeader = display.newImage(params.var3)
 	imageHeader.x = display.contentWidth *0.5
 	imageHeader.y = display.contentHeight * 0.3
@@ -46,10 +59,17 @@ function scene:enterScene( event )
 	longMessage.x = display.contentWidth/2
 	group:insert(longMessage)
 
+	backButton= display.newImage("img/backButton.png")
+	backButton.x = display.contentWidth * 0.15
+	backButton.y = display.contentHeight * 0.15
+	backButton.returnCategory = params.var5
+	group:insert(backButton)
+
+	backButton:addEventListener("touch", goBack)
+
 	-- set up the event listeners for the navbar
 	setupNavbarHandlers(nextScene)
 end
-
 
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
@@ -57,6 +77,8 @@ function scene:exitScene( event )
 
 	-- remove up the event listeners for the navbar
 	removeNavbarHandlers(nextScene)
+
+	backButton:removeEventListener("touch", goBack)
 
 	-- delete the details for the selected item to make room for the next one selected
 	imageHeader:removeSelf() 
@@ -67,7 +89,6 @@ function scene:exitScene( event )
 	-- the buttons don't work; calling storyboard.removeall() works around this issue	
 	storyboard.removeAll()
 end
-
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroyScene( event )

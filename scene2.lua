@@ -9,6 +9,8 @@ local scene = storyboard.newScene()
 
 require("navbar")
 
+local selectedCategory
+
 -- function used by the navbar to move onto the selected scene
 function nextScene(event)
 	if event.phase == "ended" then
@@ -30,7 +32,6 @@ end
 function scene:enterScene( event )
 	local group = self.view
 	
-
 	--import the table view library
 	local tableView = require("tableView")
 
@@ -73,7 +74,8 @@ function scene:enterScene( event )
 				var1 = self.data.title,
 				var2 = self.data.subtitle,
 				var3 = self.data.image,
-				var4 = self.data.longDescription 
+				var4 = self.data.longDescription,
+				var5 = selectedCategory
 			}
 		}
 
@@ -204,11 +206,13 @@ function scene:enterScene( event )
 	local selectedData = {}
 	local picker = {}
 
-	if (params.category == 1) then -- fantasy
+	selectedCategory = params.category
+
+	if (selectedCategory == 1) then -- fantasy
 		picker = {1, 2, 3, 4, 12, 16}
-	elseif (params.category == 2) then -- unusual
+	elseif (selectedCategory == 2) then -- unusual
 		picker = {2, 4, 5, 6, 8, 9, 10, 12, 13}
-	elseif (params.category == 3) then -- euro
+	elseif (selectedCategory == 3) then -- euro
 		picker = {7, 8, 11, 14}
 	else -- ameritrash
 		picker = {1, 3, 9, 10, 12, 15, 16}
