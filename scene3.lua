@@ -49,14 +49,7 @@ end
 function scene:enterScene( event )
 	local group = self.view
 	
-	-----------------------------------------------------------------------------
-		
-	--	INSERT code here (e.g. start timers, load audio, start listeners, etc.)
 	local params = event.params
-      	  print(params.var1)
-      	  print(params.var2)
-      	  print(params.var3)
-
 
 	imageHeader = display.newImage(params.var3)
 	imageHeader.x = display.contentWidth *0.5

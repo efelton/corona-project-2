@@ -1,7 +1,5 @@
 ----------------------------------------------------------------------------------
---
 -- scenetemplate.lua
---
 ----------------------------------------------------------------------------------
 
 local storyboard = require( "storyboard" )
@@ -9,18 +7,7 @@ local scene = storyboard.newScene()
 
 require("navbar")
 
-----------------------------------------------------------------------------------
--- 
---	NOTE:
---	
---	Code outside of listener functions (below) will only be executed once,
---	unless storyboard.removeScene() is called.
--- 
----------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------
--- BEGINNING OF YOUR IMPLEMENTATION
----------------------------------------------------------------------------------
+-- function used by the navbar to move onto the selected scene
 function nextScene(event)
 	print("touched")
 	if event.phase == "ended" then
@@ -32,11 +19,7 @@ end
 function scene:createScene( event )
 	local group = self.view
 
-	-----------------------------------------------------------------------------
-		
-	--	CREATE display objects and add them to 'group' here.
-	--	Example use-case: Restore 'group' from previously saved state.
-	
+	-- set up the background, contact header and message
 	background = display.newImageRect ( "sceneBG.png", 320,480)
 	background.x = display.contentWidth/2
 	background.y = display.contentHeight/2
@@ -48,11 +31,15 @@ function scene:createScene( event )
 	message:setTextColor(34, 51, 136)
 	group:insert(message)
 
+	detailMessageText = "By Phone at (01) 555-5555 \n" ..
+						"By email at service@bwg.com \n\n" ..
+						"Open Monday to Saturday from 10 am to 6.30 pm" 
+	detailMessage = display.newText(detailMessageText, 30, 150, 260, 0, nil, 18 )
+	detailMessage:setTextColor(34, 51, 136)
+	group: insert(detailMessage)
+
+	-- set up the navbar
 	setupNavbar(group)
-
-
-	-----------------------------------------------------------------------------
-	
 end
 
 
@@ -60,9 +47,8 @@ end
 function scene:enterScene( event )
 	local group = self.view
 
+	-- set up the navbar handlers
 	setupNavbarHandlers(nextScene)
-	-----------------------------------------------------------------------------
-	
 end
 
 
@@ -70,28 +56,18 @@ end
 function scene:exitScene( event )
 	local group = self.view
 
+	-- remove the navbar handlers	
 	removeNavbarHandlers(nextScene)
+
+	-- a problem with the navbar means that if the user returns to a screen with the navbar
+	-- the buttons don't work; calling storyboard.removeall() works around this issue	
 	storyboard.removeAll()
-	
-	-----------------------------------------------------------------------------
-	
-	--	INSERT code here (e.g. stop timers, remove listeners, unload sounds, etc.)
-	
-	-----------------------------------------------------------------------------
-	
 end
 
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroyScene( event )
 	local group = self.view
-	
-	-----------------------------------------------------------------------------
-	
-	--	INSERT code here (e.g. remove listeners, widgets, save state, etc.)
-	
-	-----------------------------------------------------------------------------
-	
 end
 
 
