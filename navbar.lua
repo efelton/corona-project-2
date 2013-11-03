@@ -1,3 +1,13 @@
+-- This is a reusable module that many of the scenes in this project depend upon. 
+-- This provides a navigation bar at the top of the screen that provides buttons for
+-- Home, Contact, About and Product categories.
+
+-- Scenes that wish to use the navbar should call setupNavbar() in the createScene()
+-- and should call setupNavbarHandlers() in the enterScene
+-- and removeNavbarHandlers() in the exitScene
+
+-- Because of the way scoping works in corona, the handlers function for changing scene
+-- should be passed in to setupNavbarHandlers and removeNavbarHandlers
 
 local navbarWidth = display.contentWidth
 local navbarPadding = 12 -- padding border of navbar
@@ -9,6 +19,8 @@ local homeButton
 local navBarRect, homeButtonText, homeButton, productsButtonText, productsButton, aboutButtonText, aboutButton, contactButtonText, contactButton
 
 
+-- Creates the navbar and the four buttons. 
+-- All assets added to the passed in display group.
 function setupNavbar (group) 
 	-- create the navbar
 	navbarRect = display.newRect(0, 0, navbarWidth, navbarHeight)
@@ -19,7 +31,6 @@ function setupNavbar (group)
 
 	-- create the buttons
 	homeButtonText= display.newText( "Home", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("width = " .. homeButtonText.width)
 	group:insert(homeButtonText)
 	homeButton = display.newRect (navbarPadding, navbarPadding, homeButtonText.width, navbarTextSize)
 	homeButton.isVisible = false
@@ -29,7 +40,6 @@ function setupNavbar (group)
 
 	nextTextAt = nextTextAt + buttonSpace + homeButtonText.width
 	productsButtonText = display.newText( "Products", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("products width = " .. productsButtonText.width)
 	group:insert(productsButtonText)
 
 	productsButton = display.newRect (nextTextAt, navbarPadding, productsButtonText.width, navbarTextSize)
@@ -40,7 +50,6 @@ function setupNavbar (group)
 
 	nextTextAt = nextTextAt + buttonSpace + productsButtonText.width
 	aboutButtonText = display.newText( "About", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("about width = " .. aboutButtonText.width)
 	group:insert(aboutButtonText)
 
 	aboutButton = display.newRect (nextTextAt, navbarPadding, aboutButtonText.width, navbarTextSize)
@@ -51,7 +60,6 @@ function setupNavbar (group)
 
 	nextTextAt = nextTextAt + buttonSpace + aboutButtonText.width
 	contactButtonText = display.newText( "Contact", nextTextAt, navbarPadding, nil, navbarTextSize )
---	print ("contact width = " .. contactButtonText.width)
 	group:insert(contactButtonText)
 
 	contactButton = display.newRect (nextTextAt, navbarPadding, contactButtonText.width, navbarTextSize)
@@ -77,5 +85,3 @@ function removeNavbarHandlers (myfunc)
 	contactButton:removeEventListener("touch", myfunc)
 
 end
-
-
